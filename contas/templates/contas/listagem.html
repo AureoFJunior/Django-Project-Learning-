@@ -10,9 +10,8 @@
 <body>
     <h2> Listagem </h2>
     {% for trans in transacoes %}
-    <li>{{ trans.descricao }} - {{ trans.valor }} - {{ trans.categoria }}</li>
+    <li><a href="{% url 'url_update' trans.id %}">{{ trans.descricao }} - {{ trans.valor }} - {{ trans.categoria }}</a></li>
     {% endfor %}
-
     <a href="{% url 'url_nova' %}"><button type=button>Novo</button></a>
 </body>
 </html>

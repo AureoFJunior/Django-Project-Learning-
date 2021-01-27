@@ -1,3 +1,5 @@
+from builtins import filter
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Transacao
@@ -27,3 +29,13 @@ def nova_transacao(request):
         forms.save()
         return listagem(request)
     return render(request, 'contas/form.html', {'form': forms})
+
+def update(request, pk):
+    newtransacao = Transacao.objects.get(pk=pk)
+    form = TransacaoForm(request.POST or None, instance=newtransacao)
+
+    if form.is_valid():
+        form.save()
+        return listagem(request)
+
+    return render(request, 'contas/form.html', {'form': form})
