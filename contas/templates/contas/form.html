@@ -12,7 +12,11 @@
     {% csrf_token %}
 
     {{ form.as_p }}
+
     <button type="submit">Salvar</button>
+    {% if transacaoObj %}
+    <a href="{% url 'url_delete' transacaoObj.id %}"><button type=button>Delete</button></a>
+    {% endif %}
 </form>
 
 </body>

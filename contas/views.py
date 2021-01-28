@@ -31,6 +31,7 @@ def nova_transacao(request):
     return render(request, 'contas/form.html', {'form': forms})
 
 def update(request, pk):
+    data = {}
     newtransacao = Transacao.objects.get(pk=pk)
     form = TransacaoForm(request.POST or None, instance=newtransacao)
 
@@ -38,4 +39,11 @@ def update(request, pk):
         form.save()
         return listagem(request)
 
-    return render(request, 'contas/form.html', {'form': form})
+    data['form'] = form
+    data['transacaoObj'] = newtransacao
+    return render(request, 'contas/form.html', data)
+
+def delete(request, pk):
+    newtransacao = Transacao.objects.get(pk=pk)
+    newtransacao.delete()
+    return listagem(request)
