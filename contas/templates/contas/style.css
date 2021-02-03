@@ -1,0 +1,13 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    grid-template-rows: 200px;
+
+}
+
+.box1{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 0;
+    grid-row-end: 0;
+}
